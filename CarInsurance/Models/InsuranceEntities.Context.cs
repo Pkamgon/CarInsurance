@@ -26,6 +26,5 @@ namespace CarInsurance.Models
         }
     
         public virtual DbSet<Insuree> Insurees { get; set; }
-        public object Insuree { get; internal set; }
     }
 }

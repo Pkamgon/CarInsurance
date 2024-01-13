@@ -19,6 +19,9 @@ namespace CarInsurance.Controllers
         private string carMake;
         private bool isFullCoverage;
         private bool hasDUI;
+        private int now;
+
+        public object Insurees { get; private set; }
 
         // GET: Insuree
         public ActionResult Index()
@@ -41,13 +44,13 @@ namespace CarInsurance.Controllers
             return View(insuree);
         }
 
-        // GET: Insuree/Create
+         //GET: Insuree/Create
         public ActionResult Create(string firstName, string lastName, string emailAddress)
         {
-           
+            return View();
         }
-    
-    
+
+
         // POST: Insuree/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -59,12 +62,16 @@ namespace CarInsurance.Controllers
             decimal baseQuote = 50;
 
             //Age logic
-            var age = new Age();
+            db.Insurees.Add(insuree);
+
+            Insuree.DateOfBirth.Value.Year.
+            var age = now - insuree.DateOfBirth.Value.Year.
+
             age.basequote = age;
             if (age <= 18)
                 baseQuote += 100;
 
-            else if (age >= 19 && <= 25)
+            else if (age >= 19 && age <= 25)
                 baseQuote += 25;
 
             //Car year logic
@@ -87,23 +94,24 @@ namespace CarInsurance.Controllers
             }
 
             //Speeding tickets logic
-            baseQuote = += 10 * speedingTickets;
+            baseQuote += 10 * speedingTickets;
 
             //DUI logic
 
             if (hasDUI)
-                baseQuote *= 1.25; //25% increase
+                baseQuote *= 1.25m; //25% increase
 
             //Full Coverage logic
 
             if (isFullCoverage)
-                baseQuote *= 1.5; //50% increase
+                baseQuote *= 1.5m; //50% increase
 
             //Save Quote
             db.SaveChanges();
 
 
             return View();
+              
             if (ModelState.IsValid)
             {
                 db.Insurees.Add(insuree);
@@ -114,9 +122,9 @@ namespace CarInsurance.Controllers
             return View(insuree);
         }
 
-        // GET: Insuree/Edit/5
+                // GET: Insuree/Edit/5
         public ActionResult Edit(int? id)
-        {
+            {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

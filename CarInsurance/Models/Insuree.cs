@@ -26,5 +26,15 @@ namespace CarInsurance.Models
         public Nullable<bool> SpeedingTickets { get; set; }
         public Nullable<int> CoverageType { get; set; }
         public Nullable<decimal> Quote { get; set; }
+
+        internal class DateOfBirth
+        {
+            internal class Value
+            {
+                internal class Year
+                {
+                }
+            }
+        }
     }
 }

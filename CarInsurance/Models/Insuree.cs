@@ -18,7 +18,12 @@ namespace CarInsurance.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-        public Nullable<System.DateTime> DateOfBirth { get; set; }
+
+        private DateTime? dateOfBirth;
+
+        public DateTime? GetDateOfBirth() => dateOfBirth;
+        public void SetDateOfBirth(DateTime? value) => dateOfBirth = value;
+
         public Nullable<int> CarYear { get; set; }
         public string CarMake { get; set; }
         public string CarModel { get; set; }
@@ -29,7 +34,7 @@ namespace CarInsurance.Models
 
         internal class DateOfBirth
         {
-            internal class Value
+            internal  class Value
             {
                 internal class Year
                 {

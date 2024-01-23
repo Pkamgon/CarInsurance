@@ -20,6 +20,7 @@ namespace CarInsurance.Controllers
         private bool isFullCoverage;
         private bool hasDUI;
         private int now;
+        private DateTime DateOfBirth;
 
         public object Insurees { get; private set; }
 
@@ -65,9 +66,11 @@ namespace CarInsurance.Controllers
             db.Insurees.Add(insuree);
 
             Insuree.DateOfBirth.Value.Year.
-            var age = now - insuree.DateOfBirth.Value.Year.
+            var age = now - Insuree.GetDateOfBirth.baseQuote.age;
+            
 
             age.basequote = age;
+
             if (age <= 18)
                 baseQuote += 100;
 
